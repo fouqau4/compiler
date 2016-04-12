@@ -1,29 +1,35 @@
 %{
 #include<stdio.h>
 unsigned charCount = 0, idCount = 0, lineCount = 0;
+char *type[7] = { "integer", "real", "ID", "reserved word", "string", "symbol", "comment" };
+
 /*
-real
-ID
-reserve word
+v integer
+v real
+v ID
+v reserve word
 string
 symbol
 comment
 */
 %} 
-
+reserved_word "and"|"array"|"asm"|"begin"|"break"|"case"|"const"|"constructor"|"continue"|"destructor"|"div"|"do"|"downto"|"else"|"end"|"false"|"file"|"for"|"function"|"goto"|"if"|"implementation"|"in"|"inline"|"interface"|"label"|"mod"|"nil"|"not"|"object"|"of"|"on"|"operator"|"or"|"packed"|"procedure"|"program"|"record"|"repeat"|"set"|"shl"|"shr"|"string"|"then"|"to"|"true"|"type"|"unit"|"until"|"uses"|"var"|"while"|"with"|"xor"|"as"|"class"|"dispose"|"expect"|"exit"|"exports"|"finalization"|"finally"|"inherited"|"initialization"|"is"|"library"|"new"|"on"|"out"|"property"|"raise"|"self"|"threadvar"|"try"
 space	[ ]
-eol	\n
+endl	\n
 integer	[\+\-]?[0-9]+
 ID	[a-zA-Z_][_a-zA-Z0-9]{0,29}
 real	{integer}([.][0-9]+)?([Ee]{integer})?
-string 	[\'][a-zA-Z0-9][\']
+string [\'][a-z]*[\']
+other	.	
 %%
-{integer} { printf("This integer is %s\n", yytext);}
-{real}	{ printf("This real is %s\n", yytext);}
-{string}	{printf("This string is %s\n", yytext);}
-{space} {}
-{ID}	{ idCount++; charCount += yyleng; printf("This id is %s\n", yytext);}
-
+{endl}		{ lineCount++; charCount = 0;}
+{reserved_word}	{ printf("line no.%-5u : type = %s , token = %s , first charecter position : %5u\n", lineCount, type[3], yytext, charCount + 1 ); charCount += yyleng; }
+{integer} 	{ printf("line no.%-5u : type = %s , token = %s , first charecter position : %5u\n", lineCount, type[0], yytext, charCount + 1 ); charCount += yyleng;}
+{real}		{ printf("line no.%-5u : type = %s , token = %s , first charecter position : %5u\n", lineCount, type[1], yytext, charCount + 1 ); charCount += yyleng;}
+{string}	{ printf("line no.%-5u : type = %s , token = %s , first charecter position : %5u\n", lineCount, type[4], yytext, charCount + 1 ); charCount += yyleng;}
+{space} 	{}
+{ID}		{ printf("line no.%-5u : type = %s , token = %s , first charecter position : %5u\n", lineCount, type[2], yytext, charCount + 1 ); charCount += yyleng;}
+{other}		{ printf("Unrecognized character: %s\n", yytext );}
 %%
 main(){  
 	yylex(); 
