@@ -15,7 +15,7 @@ space	[ ]
 eol	\n
 integer	[\+\-]?[0-9]+
 ID	[a-zA-Z_][_a-zA-Z0-9]{0,29}
-real	{integer}([.][0-9]+)?([Ee]{integer})?
+real	{integer}([.][0-9]+)?([Ee][\+\-][0-9]+)?
 string 	[\'][a-zA-Z0-9][\']
 %%
 {integer} { printf("This integer is %s\n", yytext);}
