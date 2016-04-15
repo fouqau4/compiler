@@ -1,0 +1,89 @@
+Line: 1, 1st char: 1, “program” is a “reserved word”.
+Line: 1, 1st char: 9, “test” is a “ID”.
+Line: 1, 1st char: 13, “;” is a “symbol”.
+Line: 2, 1st char: 1, “var” is a “reserved word”.
+Line: 3, 1st char: 3, “a” is a “ID”.
+Line: 3, 1st char: 4, “:” is a “symbol”.
+Line: 3, 1st char: 6, “array” is a “reserved word”.
+Line: 3, 1st char: 12, “[” is a “symbol”.
+Line: 3, 1st char: 13, “1” is a “integer”.
+Line: 3, 1st char: 15, “.” is a “symbol”.
+Line: 3, 1st char: 16, “.” is a “symbol”.
+Line: 3, 1st char: 18, “5” is a “integer”.
+Line: 3, 1st char: 19, “]” is a “symbol”.
+Line: 3, 1st char: 21, “of” is a “reserved word”.
+Line: 3, 1st char: 24, “integer” is a “reserved word”.
+Line: 3, 1st char: 31, “;” is a “symbol”.
+Line: 4, 1st char: 3, “b” is a “ID”.
+Line: 4, 1st char: 4, “,” is a “symbol”.
+Line: 4, 1st char: 6, “c” is a “ID”.
+Line: 4, 1st char: 7, “,” is a “symbol”.
+Line: 4, 1st char: 9, “d” is a “ID”.
+Line: 4, 1st char: 10, “:” is a “symbol”.
+Line: 4, 1st char: 12, “integer” is a “reserved word”.
+Line: 4, 1st char: 19, “;” is a “symbol”.
+Line: 5, 1st char: 1, “begin” is a “reserved word”.
+Line: 6, 1st char: 3, “b” is a “ID”.
+Line: 6, 1st char: 5, “:=” is a “symbol”.
+Line: 6, 1st char: 8, “1” is a “integer”.
+Line: 6, 1st char: 9, “;” is a “symbol”.
+Line: 7, 1st char: 3, “c” is a “ID”.
+Line: 7, 1st char: 5, “:=” is a “symbol”.
+Line: 7, 1st char: 8, “3” is a “integer”.
+Line: 7, 1st char: 9, “;” is a “symbol”.
+Line: 8, 1st char: 3, “a” is a “ID”.
+Line: 8, 1st char: 4, “[” is a “symbol”.
+Line: 8, 1st char: 5, “2” is a “integer”.
+Line: 8, 1st char: 6, “]” is a “symbol”.
+Line: 8, 1st char: 8, “:=” is a “symbol”.
+Line: 8, 1st char: 10, “c” is a “ID”.
+Line: 8, 1st char: 11, “;” is a “symbol”.
+Line: 9, 1st char: 3, “for” is a “reserved word”.
+Line: 9, 1st char: 7, “b” is a “ID”.
+Line: 9, 1st char: 9, “:=” is a “symbol”.
+Line: 9, 1st char: 12, “1” is a “integer”.
+Line: 9, 1st char: 14, “TO” is a “reserved word”.
+Line: 9, 1st char: 17, “b” is a “ID”.
+Line: 9, 1st char: 18, “*” is a “symbol”.
+Line: 9, 1st char: 19, “2” is a “integer”.
+Line: 9, 1st char: 20, “+” is a “symbol”.
+Line: 9, 1st char: 21, “1” is a “integer”.
+Line: 9, 1st char: 23, “do” is a “reserved word”.
+Line: 10, 1st char: 3, “BEGIN” is a “reserved word”.
+Line: 11, 1st char: 5, “if” is a “reserved word”.
+Line: 11, 1st char: 8, “(” is a “symbol”.
+Line: 11, 1st char: 9, “a” is a “ID”.
+Line: 11, 1st char: 10, “[” is a “symbol”.
+Line: 11, 1st char: 11, “b” is a “ID”.
+Line: 11, 1st char: 12, “]” is a “symbol”.
+Line: 11, 1st char: 14, “>=” is a “symbol”.
+Line: 11, 1st char: 17, “2” is a “integer”.
+Line: 11, 1st char: 18, “)” is a “symbol”.
+Line: 11, 1st char: 20, “then” is a “reserved word”.
+Line: 12, 1st char: 7, “WRITE” is a “reserved word”.
+Line: 12, 1st char: 12, “(” is a “symbol”.
+Line: 12, 1st char: 13, “b” is a “ID”.
+Line: 12, 1st char: 14, “)” is a “symbol”.
+Line: 12, 1st char: 15, “;” is a “symbol”.
+Line: 13, 1st char: 5, “for” is a “reserved word”.
+Line: 13, 1st char: 9, “d” is a “ID”.
+Line: 13, 1st char: 10, “:=” is a “symbol”.
+Line: 13, 1st char: 13, “1” is a “integer”.
+Line: 13, 1st char: 15, “To” is a “reserved word”.
+Line: 13, 1st char: 18, “(” is a “symbol”.
+Line: 13, 1st char: 19, “1” is a “integer”.
+Line: 13, 1st char: 20, “+” is a “symbol”.
+Line: 13, 1st char: 21, “2” is a “integer”.
+Line: 13, 1st char: 22, “)” is a “symbol”.
+Line: 13, 1st char: 23, “*” is a “symbol”.
+Line: 13, 1st char: 24, “3” is a “integer”.
+Line: 13, 1st char: 26, “do” is a “reserved word”.
+Line: 14, 1st char: 7, “WRITE” is a “reserved word”.
+Line: 14, 1st char: 12, “(” is a “symbol”.
+Line: 14, 1st char: 13, “c” is a “ID”.
+Line: 14, 1st char: 14, “)” is a “symbol”.
+Line: 14, 1st char: 15, “;” is a “symbol”.
+Line: 15, 1st char: 3, “END” is a “reserved word”.
+Line: 15, 1st char: 6, “;” is a “symbol”.
+Line: 16, 1st char: 1, “end” is a “reserved word”.
+Line: 16, 1st char: 4, “.” is a “symbol”.

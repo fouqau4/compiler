@@ -13,5 +13,4 @@ begin
     for d:= 1 To (1+2)*3 do
       WRITE(c);
   END;
-end.
-
+end.2
