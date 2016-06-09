@@ -1,0 +1,7 @@
+Line  1: program test;
+Line  2: var
+Line  3:   i, j :=
+Line  3, 1st char:  9, syntax error, unexpected ASSIGNMENT, expecting COLON or COMMA
+Line  4: begin
+Line  5:   i := 5;
+Line  6: end.

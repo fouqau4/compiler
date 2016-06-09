@@ -1,8 +1,0 @@
-all: parser
-	
-
-parser: 
-	bison -y -d xx.y;flex xx.l;gcc lex.yy.c y.tab.c -ly -lfl
-	
-clear:
-	rm -f lex.yy.c y.tab.c  a.out

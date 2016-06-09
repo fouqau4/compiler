@@ -1,0 +1,158 @@
+%{
+/*
+ * pascal.l
+ *
+ * lex input file for pascal scanner
+ *
+ * extensions: to ways to spell "external" and "->" ok for "^".
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include "pascal.tab.h"
+#define BUF_SIZE 1024
+
+int line_no = 1;
+
+char buf[BUF_SIZE];
+
+%}
+
+A       [aA]
+B       [bB]
+C       [cC]
+D       [dD]
+E       [eE]
+F       [fF]
+G       [gG]
+H       [hH]
+I       [iI]
+J       [jJ]
+K       [kK]
+L       [lL]
+M       [mM]
+N       [nN]
+O       [oO]
+P       [pP]
+Q       [qQ]
+R       [rR]
+S       [sS]
+T       [tT]
+U       [uU]
+V       [vV]
+W       [wW]
+X       [xX]
+Y       [yY]
+Z       [zZ]
+NQUOTE  [^']
+       
+%%
+
+{A}{N}{D}                          { strcat( buf, yytext ); return(AND);}
+{A}{R}{R}{A}{Y}                    { strcat( buf, yytext ); return(ARRAY);}
+{C}{A}{S}{E}                       { strcat( buf, yytext ); return(CASE);}
+{C}{O}{N}{S}{T}                    { strcat( buf, yytext ); return(CONST);}
+{D}{I}{V}                          { strcat( buf, yytext ); return(DIV);}
+{D}{O}                             { strcat( buf, yytext ); return(DO);}
+{D}{O}{W}{N}{T}{O}                 { strcat( buf, yytext ); return(DOWNTO);}
+{E}{L}{S}{E}                       { strcat( buf, yytext ); return(ELSE);}
+{E}{N}{D}                          { strcat( buf, yytext ); return(END);}
+{E}{X}{T}{E}{R}{N}        |
+{E}{X}{T}{E}{R}{N}{A}{L}           { strcat( buf, yytext ); return(EXTERNAL);}
+{F}{O}{R}                          { strcat( buf, yytext ); return(FOR);}
+{F}{O}{R}{W}{A}{R}{D}              { strcat( buf, yytext ); return(FORWARD);}
+{F}{U}{N}{C}{T}{I}{O}{N}           { strcat( buf, yytext ); return(FUNCTION);}
+{G}{O}{T}{O}                       { strcat( buf, yytext ); return(GOTO);}
+{I}{F}                             { strcat( buf, yytext ); return(IF);}
+{I}{N}                             { strcat( buf, yytext ); return(IN);}
+{L}{A}{B}{E}{L}                    { strcat( buf, yytext ); return(LABEL);}
+{M}{O}{D}                          { strcat( buf, yytext ); return(MOD);}
+{N}{I}{L}                          { strcat( buf, yytext ); return(NIL);}
+{N}{O}{T}                          { strcat( buf, yytext ); return(NOT);}
+{O}{F}                             { strcat( buf, yytext ); return(OF);}
+{O}{R}                             { strcat( buf, yytext ); return(OR);}
+{O}{T}{H}{E}{R}{W}{I}{S}{E}        { strcat( buf, yytext ); return(OTHERWISE);}
+{P}{A}{C}{K}{E}{D}                 { strcat( buf, yytext ); return(PACKED);}
+{B}{E}{G}{I}{N}                    { strcat( buf, yytext ); return(PBEGIN);}
+{F}{I}{L}{E}                       { strcat( buf, yytext ); return(PFILE);}
+{P}{R}{O}{C}{E}{D}{U}{R}{E}        { strcat( buf, yytext ); return(PROCEDURE);}
+{P}{R}{O}{G}{R}{A}{M}              { strcat( buf, yytext ); return(PROGRAM);}
+{R}{E}{C}{O}{R}{D}                 { strcat( buf, yytext ); return(RECORD);}
+{R}{E}{P}{E}{A}{T}                 { strcat( buf, yytext ); return(REPEAT);}
+{S}{E}{T}                          { strcat( buf, yytext ); return(SET);}
+{T}{H}{E}{N}                       { strcat( buf, yytext ); return(THEN);}
+{T}{O}                             { strcat( buf, yytext ); return(TO);}
+{T}{Y}{P}{E}                       { strcat( buf, yytext ); return(TYPE);}
+{U}{N}{T}{I}{L}                    { strcat( buf, yytext ); return(UNTIL);}
+{V}{A}{R}                          { strcat( buf, yytext ); return(VAR);}
+{W}{H}{I}{L}{E}                    { strcat( buf, yytext ); return(WHILE);}
+{W}{I}{T}{H}                       { strcat( buf, yytext ); return(WITH);}
+[a-zA-Z]([a-zA-Z0-9\-])*           { strcat( buf, yytext ); return(IDENTIFIER);}
+
+":="                               { strcat( buf, yytext ); return(ASSIGNMENT);}
+'({NQUOTE}|'')+'                   { strcat( buf, yytext ); return(CHARACTER_STRING);}
+":"                                { strcat( buf, yytext ); return(COLON);}
+","                                { strcat( buf, yytext ); return(COMMA);}
+[0-9]+                             { strcat( buf, yytext ); return(DIGSEQ);}
+"."                                { strcat( buf, yytext ); return(DOT);}
+".."                               { strcat( buf, yytext ); return(DOTDOT);}
+"="                                { strcat( buf, yytext ); return(EQUAL);}
+">="                               { strcat( buf, yytext ); return(GE);}
+">"                                { strcat( buf, yytext ); return(GT);}
+"["                                { strcat( buf, yytext ); return(LBRAC);}
+"<="                               { strcat( buf, yytext ); return(LE);}
+"("                                { strcat( buf, yytext ); return(LPAREN);}
+"<"                                { strcat( buf, yytext ); return(LT);}
+"-"                                { strcat( buf, yytext ); return(MINUS);}
+"<>"                               { strcat( buf, yytext ); return(NOTEQUAL);}
+"+"                                { strcat( buf, yytext ); return(PLUS);}
+"]"                                { strcat( buf, yytext ); return(RBRAC);}
+[0-9]+"."[0-9]+                    { strcat( buf, yytext ); return(REALNUMBER); }
+")"                                { strcat( buf, yytext ); return(RPAREN);}
+";"                                { strcat( buf, yytext ); return(SEMICOLON); }
+"/"                                { strcat( buf, yytext ); return(SLASH); }
+"*"                                { strcat( buf, yytext ); return(STAR); }
+"**"                               { strcat( buf, yytext ); return(STARSTAR); }
+"->"                        	   { strcat( buf, yytext ); return(UPARROW); }
+"^"                                { strcat( buf, yytext ); return(UPARROW); }
+
+"(*"                        |
+"{"                                { register int c;
+                                     while ((c = input()))
+                                     {
+                                       if (c == '}')
+                                         break;
+                                       else if (c == '*')
+                                       {
+                                         if ((c = input()) == ')')
+                                           break;
+                                         else
+                                           unput (c);
+                                       }          
+                                       else if (c == '\n')
+                                         line_no++;
+                                       else if (c == 0)
+                                         commenteof();
+                                     }
+                                   }
+
+[" "]                            { strcat( buf, yytext );  } ;
+[\t]				 { strcat( buf, yytext ); } ;
+[\f]				 { strcat( buf, yytext ); } ;
+\n                               { printf("Line %2d: %s\n", line_no++, buf ); memset( buf, 0, BUF_SIZE );}
+
+.                                { fprintf (stderr, "'%c' (0%o): illegal character at line %d\n", yytext[0], yytext[0], line_no); }
+
+%%
+
+commenteof()
+{
+  fprintf (stderr, "Unexpected EOF inside comment at line %d\n", line_no);
+  exit (1);
+}
+
+yywrap ()
+{
+  return (1);
+}
+

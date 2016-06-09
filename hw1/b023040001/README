@@ -1,0 +1,37 @@
+Compiler lab1
+學號 : B023040001
+姓名 : 李書緯
+--------------------------------
+lineCount為當前的行數
+charCount為字元的位置，換行後重新計算
+state 用來紀錄讀取token後的狀態 :
+ * -2  為invalid real
+ * -1  為invalid ID
+ *  1  為等待正常指令(ex: assignment, loop, function )
+ *  2  為等待 assignment symbol(ex: ":", ":=" )
+ *  3  為等待 semicolon( ; )
+ *  4  為特殊例外處理
+declaration 為判斷是否在宣告變數
+prevToken 用來紀錄前一個token的type
+rcmp()  為用來比較yytext與相對字串在case insensitive的情況下是否相同(因為strcmp會分辨case，只好自己寫一個function ~_~ )
+--------------------------------
+1.先將各個token的regular expression列出來，有特殊需求的toke則額外處理(ex: comment )
+
+2.當遇到 '\n' 時，lineCount++
+
+3.讀到 '\r'會自動忽略
+
+4.在scan的過程中，以紀錄state的方式，來實作 error detection
+
+5.string的處理方面，原本是採用regular expression來實作，但為了可以精確計算charCount，改在rule部份來實作
+
+6.comment的實作方式，因為我寫不出可以解決所有情況的regular expression，我是參考網路上的解法，把實作部份改到rule來執行，可以輕易的判斷狀況
+
+7.對於 1+2 這種沒有用空格分開的運算式，依照regular expression判斷，會把+2判斷成整數，在讀進+2時，會先判斷prevToken是否為integer，如果是代表不應該讀成integer，要讀成 + ，所以執行REJECT，尋找下一個符合條件的token ( symbol )
+
+8.如果在state 1，卻讀到 ID、reserved word、comment以外的token，代表語法有錯誤，依照state的變化進行不同的error handling
+
+9.若讀到換行時，發現還沒出現 semicolon ( state = 3 )，輸出錯誤訊息
+-------------------------------
+神奇現象：
+	在我進行測試時，testfile2014_lab2的測資裡面，test2.pas test3.pas test4.pas test5.pas 最後都是以 '.'作為結尾，當程式讀到結尾的 '.'時，yytext印出來的結果為空字串，然後會顯示出讀到unrecognized character，我將這個神秘的charecter用 int印出來的值為 -1，unsigned印出來為 4294967295，我解決的方式是先在 '.'後面輸入任意字元，再用backspace or delete把輸入的字元刪除，重新存檔，再次測試時就可以正常的讀出 '.'，但還是無法解釋這個神秘的現象。

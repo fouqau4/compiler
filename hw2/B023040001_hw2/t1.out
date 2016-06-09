@@ -1,0 +1,7 @@
+Line  1: program test;
+Line  2: var
+Line  3:   i : integer;
+Line  4: begin
+Line  5:   read(i);
+Line  6: end;
+Line  6, 1st char:  4, syntax error, unexpected SEMICOLON, expecting DOT

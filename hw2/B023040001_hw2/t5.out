@@ -1,0 +1,10 @@
+Line  1: program test;
+Line  2: var
+Line  3:   i, j : integer;
+Line  4: begin
+Line  5:   read(i);
+Line  6:   i :
+Line  6, 1st char:  5, syntax error, unexpected COLON, expecting ASSIGNMENT
+Line  7:   write(i)
+Line  8: end
+Line  8, 1st char:  3, syntax error, unexpected END, expecting SEMICOLON

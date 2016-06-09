@@ -1,0 +1,14 @@
+Compiler hw2
+學號 ：b023040001
+姓名 ：李書緯
+-------------------------------------------------
+1.	Lex version :
+	Yacc version :
+2.	作業平台 :
+3.	執行方式 : make clear all; ./a.out < file_name
+4.	將文法輸入到.y檔裡面，並且在.y檔裡面註冊token，將編譯過後產生的y.tab.h include 到 .l檔裡面，讓scanner回傳正確token
+5.	(1).	一開始遇到的問題是從scanner要return token時會顯示token未定義，只要include y.tab.h即可解決
+	(2).	文法方面，作業提供的範例文法有錯誤，修正之後才可以正常運作
+	(3).	在error recovery部份，一開始不知道要怎麼解決，和同學請教之後學到：在文法後面加上一項 | error，error 為保留字，會呼叫yyerror
+	(4).	一開始yyerror我是將錯誤訊息輸出到stderr，但好像會出現神奇的事件，錯誤訊息輸出之後，該行又會被印出來一次，解決方法是改用一般的printf輸出到stdout
+	(5).	一開始，輸出錯誤訊息後，還是會把剩下的input string印出來，解決方法是設立一個flags來控制訊息的輸出
